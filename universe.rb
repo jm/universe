@@ -30,14 +30,47 @@ helpers do
   
   def twitter_format(text)
     # cut off the username
-    text = text.split(/: /)[1]
+    text = text.sub(/^(.*?:)/, '')
+    
+    text = auto_link(text)
     
     # link @username
     if text =~ /@(\S)*/
       text.gsub!(/@(\S)*/, "<a href='http://twitter.com/#{Regexp::last_match[0].delete("@")}'>#{Regexp::last_match[0]}</a>")
-    end
+    end    
     
     text
+  end
+  
+  # Jacked from ActiveSupport
+  AUTO_LINK_RE = %r{
+      ( https?:// | www\. )
+      [^\s<]+
+    }x unless const_defined?(:AUTO_LINK_RE)
+    
+  def auto_link(text)
+    text.gsub(AUTO_LINK_RE) do
+      href = $&
+      punctuation = ''
+      # detect already linked URLs
+      if $` =~ /<a\s[^>]*href="$/
+        # do not change string; URL is alreay linked
+        href
+      else
+        # don't include trailing punctuation character as part of the URL
+        if href.sub!(/[^\w\/-]$/, '') and punctuation = $& and opening = BRACKETS[punctuation]
+          if href.scan(opening).size > href.scan(punctuation).size
+            href << punctuation
+            punctuation = ''
+          end
+        end
+
+        link_text = href
+        href = 'http://' + href unless href.index('http') == 0
+
+        "<a href='#{href}'>#{link_text}</a>" + punctuation
+      end
+    end
   end
 end
 
