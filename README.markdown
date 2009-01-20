@@ -5,7 +5,7 @@ universe (and Yahoo! Pipes) make it super simple to create a lifestream of yours
 
 ### Setup
 
-1. You'll need to create a Yahoo! Pipe to combine all your feeds into one RSS feed.  You can see ours here: http://pipes.yahoo.com/pipes/pipe.info?_id=6b733facbd35af0391add092723f6565
+1. You'll need to create a Yahoo! Pipe to combine all your feeds into one RSS feed.  You can see ours "here":http://pipes.yahoo.com/pipes/pipe.info?_id=6b733facbd35af0391add092723f6565
 
 2. Once you have your Pipe rolling, then you need to come back to universe.rb and edit the SOURCE_MAP constant to match your data (mostly just the blog URL matcher unless you've added more feeds).  
 
