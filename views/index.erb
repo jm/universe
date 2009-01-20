@@ -1,0 +1,4 @@
+<% require 'pp' %>
+<% @feed.items.each do |item| %>
+  <%= entry item, find_source_of(item) %>
+<% end %>

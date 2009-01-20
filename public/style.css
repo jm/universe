@@ -1,0 +1,36 @@
+BODY {
+	font-size: 10pt;
+  font-family: Helvetica, Arial, sans-serif;
+  background: url('/back.png') black;
+  background-repeat: repeat-x;
+}
+
+#wrapper {
+  width: 70em;
+  margin: auto;
+}
+
+.item {
+  overflow: hidden;
+  background: white;
+  padding: 1em;
+  margin: 1em;
+  border: 1px solid #000;
+}
+
+.item h1 {
+  margin: 0;
+}
+
+.item h1 .author {
+  color: #666;
+}
+
+.item .meta {
+  border: 1px solid #ccc;
+  margin-top: 0.8em;
+  background: #c9c9c9;
+  font-size: 8pt;
+  color: #666;
+  padding: 0.5em;
+}
